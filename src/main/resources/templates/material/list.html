@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.tymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>素材一覧</title>
+</head>
+<body>
+
+<h1>昇進・育成素材一覧</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>素材名</th>
+      <th>画像</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr th:each="material : ${materials}">
+      <!-- Name -->
+      <td th:text="${material.name}"></td>
+
+      <!-- Image Placeholder -->
+      <td>画像置き場（Todo）</td>
+
+      <!-- Hidden Element -->
+      <td>
+        <input type="hidden" th:value="${material.id}" name="id" />
+        <input type="hidden" th:value="${material.rankId}" name="rankId"/>
+        <input type="hidden" th:value="${material.moneyCost}" name="moneyCost"/>
+        <input type="hidden" th:value="${material.staminaCost}" name="staminaCost"/>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+</body>
+</html>
