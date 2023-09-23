@@ -17,7 +17,7 @@ public class MaterialController {
         this.materialSvc = materialSvc;
     }
 
-    @GetMapping
+    @GetMapping("/materials")
     public String getMaterials(Model model) {
         List<Material> materials = materialSvc.findAll();
         model.addAttribute("materials", materials);
