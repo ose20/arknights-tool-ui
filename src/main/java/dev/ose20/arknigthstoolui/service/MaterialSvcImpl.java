@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestOperations;
 import org.springframework.web.util.UriComponentsBuilder;
 
-import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
@@ -46,6 +45,13 @@ public class MaterialSvcImpl implements MaterialSvc {
     }
 
     @Override public MaterialDetail findDetailById(Long id) {
-        return null;
+        UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(String.format("%s/detail/%s", apiUrlPrefix, id));
+
+        return Objects.requireNonNull(
+            restOperations.getForObject(
+                builder.build().toUriString(),
+                MaterialDetail.class
+            )
+        );
     }
 }

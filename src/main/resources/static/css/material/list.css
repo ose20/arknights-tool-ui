@@ -1,0 +1,80 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #2a2a2a;
+    color: #f0f0f0;
+}
+
+h1 {
+    text-align: center;
+    font-weight: bold;
+    letter-spacing: 2px;
+    margin-bottom: 30px;
+}
+
+.materials-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 20px 10px;
+}
+
+.material-row {
+    display: inline-block;
+}
+
+.material-card {
+    border: 1px solid #444;
+    background-color: #3a3a3a;
+    padding: 0;
+    border-radius: 5px;
+    text-align: center;
+    transition: 0.3s;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.material-image {
+    width: 120px;  /* adjust width and height as per your image's requirement */
+    height: 120px;
+    margin-bottom: 10px;
+    background-color: #f4f4f4; /* temporary, can be replaced with actual image using `background-image` */
+    border-radius: 5px;
+}
+
+.material-image img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+.material-card:hover {
+    transform: translateY(-5px); /* ホバー時に少し上に移動 */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* ホバー時の影の強化 */
+}
+
+.material-card-link {
+    display: block;
+    text-decoration: none;
+    padding: 15px;
+    border: 1px solid #444;
+    background-color: #3a3a3a;
+    border-radius: 5px;
+    text-align: center;
+    transition: all 0.3s;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.material-card-link:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    color: #ffd700;
+}
+
+a {
+    color: #d1a658; /* ゴールド風の色 */
+    text-decoration: none; /* アンダーラインを削除 */
+    transition: color 0.3s; /* 色の変化のトランジション */
+}
+
+a:hover {
+    color: #ffd700; /* ホバー時により明るいゴールドに */
+}
