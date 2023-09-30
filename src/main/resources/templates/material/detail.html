@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.tymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>素材詳細</title>
+
+  <link rel="stylesheet" th:href="@{/css/common.css}">
+  <link rel="stylesheet" th:href="@{/css/material/detail.css}">
+</head>
+<body>
+
+<div class="breadcrumb">
+  <ol>
+    <li><a th:href="@{/materials}">素材一覧</a></li>
+    <li th:text="${materialDetail.material.name}"></li>
+  </ol>
+</div>
+
+<div class="content-wrapper">
+  <div class="column">
+    <h2>基本情報</h2>
+    <table>
+      <tbody th:object="${materialDetail}">
+      <tr>
+        <th colspan="3" th:text="*{material.name}"></th>
+      </tr>
+      <tr>
+        <td><img th:src="@{'/images/material/' + *{material.name} + '.png'}" alt=""></td>
+        <th>タイプ</th>
+        <td th:text="${rank.jpName}">ランクの名前</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="column">
+    <h2>生産レシピ</h2>
+    <table class="recipe">
+      <thead>
+      <tr>
+        <th>必要素材</th>
+        <th>個数</th>
+      </tr>
+      </thead>
+      <tbody th:object="${materialDetail}">
+      <tr th:each="required : *{requiredMaterials}">
+        <td><img th:src="@{'/images/material/' + ${required.name} + '.png'}" alt="Material Image"><span th:text="${required.name}">素材の名前</span></td>
+        <td th:text="${required.quantity}">素材の数</td>
+        <!-- Hidden Element -->
+        <td>
+          <input type="hidden" th:value="${required.materialId}" name="materialId"/>
+        </td>
+      </tr>
+      <tr>
+        <td><img th:src="@{/images/valuables/龍門幣.png}" alt="Money Image">龍門幣</td>
+        <td><span th:text="*{material.moneyCost}"></span></td>
+      </tr>
+      <tr>
+        <td>消費体力</td>
+        <td th:text="*{material.staminaCost}"></td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+</body>
+</html>

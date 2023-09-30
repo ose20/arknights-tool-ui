@@ -3,32 +3,23 @@
 <head>
   <meta charset="UTF-8">
   <title>素材一覧</title>
+  <link rel="stylesheet" th:href="@{/css/common.css}">
+  <link rel="stylesheet" th:href="@{/css/material/list.css}">
 </head>
 <body>
 
 <h1>昇進・育成素材一覧</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>素材名</th>
-      <th>画像</th>
-    </tr>
-  </thead>
+<table class="materials-table">
   <tbody>
-    <tr th:each="material : ${materials}">
-      <!-- Name -->
-      <td th:text="${material.name}"></td>
-
-      <!-- Image Placeholder -->
-      <td>画像置き場（Todo）</td>
-
-      <!-- Hidden Element -->
-      <td>
-        <input type="hidden" th:value="${material.id}" name="id" />
-        <input type="hidden" th:value="${material.rankId}" name="rankId"/>
-        <input type="hidden" th:value="${material.moneyCost}" name="moneyCost"/>
-        <input type="hidden" th:value="${material.staminaCost}" name="staminaCost"/>
+    <tr th:each="material : ${materials}" class="material-row">
+      <td class="material-card">
+        <a th:href="@{/materials/{id}(id=${material.id})}" class="material-card-link">
+        <div class="material-image">
+          <img th:src="@{'/images/material/' + ${material.name} + '.png'}" alt="Material Image">
+        </div>
+        <span th:text="${material.name}"></span>
+        </a>
       </td>
     </tr>
   </tbody>
