@@ -35,7 +35,7 @@
 
   <div class="column">
     <h2>生産レシピ</h2>
-    <table class="recipe">
+    <table class="recipe" th:if="${materialDetail.requiredMaterials != null and not #lists.isEmpty(materialDetail.requiredMaterials)}">
       <thead>
       <tr>
         <th>必要素材</th>
@@ -61,6 +61,10 @@
       </tr>
       </tbody>
     </table>
+
+    <!-- requiredMaterialsがからの場合 -->
+    <p th:unless="${materialDetail.requiredMaterials != null and not #lists.isEmpty(materialDetail.requiredMaterials)}">合成レシピはありません</p>
+
   </div>
 </div>
 
