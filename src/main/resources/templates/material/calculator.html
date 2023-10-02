@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.tymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>必要素材シミュレータ</title>
+</head>
+<body>
+
+<div class="breadcrumb">
+    <ol>
+        <li><a th:href="@{/materials}">素材一覧</a></li>
+        <li>必要素材シミュレータ</li>
+    </ol>
+</div>
+
+<form th:action="@{/materials/calculator}" th:object="${reqMatWrapper}" method="post">
+    <table>
+        <tr th:each="material, stat : *{reqMats}">
+            <td th:text="${material.name}"></td>
+            <td>
+                <input type="hidden" th:field="*{reqMats[__${stat.index}__].materialId}"
+                       th:value="${material.materialId}" />
+                <input type="hidden" th:field="*{reqMats[__${stat.index}__].name}"
+                       th:value="${material.name}" />
+                <select th:field="*{reqMats[__${stat.index}__].quantity}">
+                    <option th:each="num : ${#numbers.sequence(0, 20)}" th:value="${num}" th:text="${num}"></option>
+                </select>
+            </td>
+        </tr>
+    </table>
+    <input type="submit" value="必要数を計算する" />
+</form>
+
+
+</body>
+</html>
