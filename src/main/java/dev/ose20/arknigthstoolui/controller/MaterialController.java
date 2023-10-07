@@ -80,16 +80,21 @@ public class MaterialController {
         );
 
         redirectAttributes.addFlashAttribute(
-                "reqMatWrapper", reqMatWrapper
+                "userSelect", new ReqMatWrapper().reqMats(reqMats)
         );
 
         redirectAttributes.addFlashAttribute(
-                "reqMats",
+                "result",
                 new ReqMatWrapper().reqMats(materialSvc.decomposeReqMats(reqMats))
         );
 
 
         // リダイレクトを検討。その場合はセッションやフラッシュスコープが必要かも
-        return "redirect:/materials/calculator";
+        return "redirect:/materials/calculator/result";
+    }
+
+    @GetMapping("/calculator/result")
+    public String showCalculationResult() {
+        return "material/calculation-result";
     }
 }

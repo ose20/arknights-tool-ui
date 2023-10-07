@@ -1,0 +1,100 @@
+.breadcrumb ol {
+    list-style-type: none;
+    margin: 0;
+    padding: 0 0 0 1em;
+}
+
+.breadcrumb li {
+    display: inline;
+}
+
+.breadcrumb li::after {
+    content: "»";
+    margin: 0 0.4em 0 0.6em;
+    color: #999;
+}
+
+.breadcrumb li:last-child::after {
+    content: none;
+}
+
+.breadcrumb a {
+    text-decoration: none;
+}
+
+
+.material-selection-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 20px 10px;
+}
+
+.material-selection-row {
+    display: inline-block;
+}
+
+.material-card {
+    width: 150px;
+    border: 1px solid #444;
+    background-color: #3a3a3a;
+    padding: 0;
+    border-radius: 5px;
+    text-align: center;
+    transition: 0.3s;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.material-image img {
+    max-width: 100%;
+    width: 120px;
+    height: 120px;
+    display: block;
+    margin: 0 auto;
+}
+
+.material-card span {
+    display: block;
+    margin: 2px 0;
+}
+
+
+.material-card select {
+    width: 70px;
+    height: 30px;
+    font-size: 18px;
+    border: none;
+    border: 1px solid #666; /* 境界線を追加 */
+    background-color: #4a4a4a;
+    color: #f0f0f0;
+    margin-top: 10px;
+    border-radius: 3px;
+    cursor: pointer; /* ホバー時のカーソル変更 */
+}
+
+.material-card select:hover {
+    background-color: #5a5a5a; /* ホバー時の背景色をさらに明るく */
+}
+
+input[type="submit"] {
+    background-color: #6C5B54; /* 中間のブロンズカラー */
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    color: #f0f0f0;
+    cursor: pointer;
+    margin-top: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* 影を追加 */
+    transition: all 0.3s; /* すべてのプロパティにスムーズな遷移を適用 */
+}
+
+/* ホバーエフェクト */
+input[type="submit"]:hover {
+    background-color: #7D6B64; /* より明るいブロンズ */
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.1); /* 影をやや大きく */
+    transform: translateY(-2px); /* 少し上に浮き上がる */
+}
+
+input[type="submit"]:active {
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2); /* クリック時の影の強さを調整 */
+    transform: translateY(0px); /* 元の位置に戻る */
+}

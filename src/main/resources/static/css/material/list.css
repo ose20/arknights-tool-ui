@@ -35,7 +35,7 @@ h1 {
     width: 120px;  /* adjust width and height as per your image's requirement */
     height: 120px;
     margin-bottom: 10px;
-    background-color: #f4f4f4; /* temporary, can be replaced with actual image using `background-image` */
+
     border-radius: 5px;
 }
 

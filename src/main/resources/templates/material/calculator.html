@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>必要素材シミュレータ</title>
+    <link rel="stylesheet" th:href="@{/css/common.css}">
+    <link rel="stylesheet" th:href="@{/css/material/calculator.css}">
 </head>
 <body>
 
@@ -14,33 +16,34 @@
 </div>
 
 
-<div th:if="${reqMats != null}">
-    <h3>必要素材を計算する機能を実装中だZE！</h3>
-    <table>
-        <tr th:each="material, stat : ${reqMats.reqMats}">
-            <td th:text="${material.name}"></td>
-            <td th:text="${material.quantity}"></td>
-        </tr>
-    </table>
-</div>
+<h2>必要な素材を選択してください</h2>
 
 <form th:action="@{/materials/decompose}" th:object="${reqMatWrapper}" method="post">
-    <table>
-        <tr th:each="material, stat : *{reqMats}">
-            <td th:text="${material.name}"></td>
-            <td>
+    <div style="text-align: center;">
+        <input type="submit" value="必要数を計算する"/>
+    </div>
+
+    <table class="material-selection-table">
+        <tr th:each="material, stat : *{reqMats}" class="material-selection-row">
+            <td class="material-card">
+                <div class="material-image">
+                    <img th:src="@{'/images/material/' + ${material.name} + '.png'}" alt="Material Image">
+                </div>
+                <span th:text="${material.name}"></span>
                 <input type="hidden" th:field="*{reqMats[__${stat.index}__].materialId}"
                        th:value="${material.materialId}" />
                 <input type="hidden" th:field="*{reqMats[__${stat.index}__].name}"
                        th:value="${material.name}" />
                 <select th:field="*{reqMats[__${stat.index}__].quantity}">
-                    <option th:each="num : ${#numbers.sequence(0, 20)}" th:value="${num}" th:text="${num}"
-                            ></option>
+                    <option th:each="num : ${#numbers.sequence(0, 20)}" th:value="${num}" th:text="${num}"></option>
                 </select>
             </td>
         </tr>
     </table>
-    <input type="submit" value="必要数を計算する" />
+
+    <div style="text-align: center;">
+        <input type="submit" value="必要数を計算する"/>
+    </div>
 </form>
 
 

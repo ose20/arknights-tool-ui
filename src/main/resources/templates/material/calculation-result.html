@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.tymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>必要素材計算結果</title>
+    <link rel="stylesheet" th:href="@{/css/common.css}">
+    <link rel="stylesheet" th:href="@{/css/material/calculation-result.css}">
+</head>
+<body>
+
+
+<div class="breadcrumb">
+    <ol>
+        <li><a th:href="@{/materials/calculator}">必要素材シミュレータ</a></li>
+        <li>計算結果</li>
+    </ol>
+</div>
+
+<div th:if="${userSelect != null && result != null}">
+    <table th:object="${userSelect}" class="user-select-table">
+        <tbody>
+            <tr th:each="material : *{reqMats}" class="material-row">
+                <td class="selected-material">
+                    <img th:src="@{'/images/material/' + ${material.name} + '.png'}" alt="Material Image">
+                    <span>× <span th:text="${material.quantity}"></span></span>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    を作るために必要な素材は...
+
+    <table th:object="${result}" class="result-table">
+        <tbody>
+            <tr>
+                <td th:each="material : *{reqMats}" class="material-card">
+                    <div class="material-image-and-name">
+                        <img th:src="@{'/images/material/' + ${material.name} + '.png'}" alt="Material Image">
+                        <span th:text="${material.name}">素材の名前</span>
+                    </div>
+                    <div class="material-quantity">
+                        × <span th:text="${material.quantity}"></span>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+        </tr>
+    </table>
+</div>
+
+</body>
+</html>
