@@ -75,18 +75,21 @@ public class MaterialController {
         List<RequiredMaterial> reqMats = reqMatWrapper.getReqMats().stream()
                         .filter(rm -> rm.getQuantity() > 0).toList();
 
+        reqMatWrapper.getReqMats().forEach(
+                System.out::println
+        );
 
         redirectAttributes.addFlashAttribute(
                 "reqMatWrapper", reqMatWrapper
         );
 
         redirectAttributes.addFlashAttribute(
-                "resMats",
+                "reqMats",
                 new ReqMatWrapper().reqMats(materialSvc.decomposeReqMats(reqMats))
         );
 
 
         // リダイレクトを検討。その場合はセッションやフラッシュスコープが必要かも
-        return "redirect:/material/calculator";
+        return "redirect:/materials/calculator";
     }
 }

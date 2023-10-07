@@ -13,7 +13,18 @@
     </ol>
 </div>
 
-<form th:action="@{/materials/calculator}" th:object="${reqMatWrapper}" method="post">
+
+<div th:if="${reqMats != null}">
+    <h3>必要素材を計算する機能を実装中だZE！</h3>
+    <table>
+        <tr th:each="material, stat : ${reqMats.reqMats}">
+            <td th:text="${material.name}"></td>
+            <td th:text="${material.quantity}"></td>
+        </tr>
+    </table>
+</div>
+
+<form th:action="@{/materials/decompose}" th:object="${reqMatWrapper}" method="post">
     <table>
         <tr th:each="material, stat : *{reqMats}">
             <td th:text="${material.name}"></td>
@@ -23,13 +34,15 @@
                 <input type="hidden" th:field="*{reqMats[__${stat.index}__].name}"
                        th:value="${material.name}" />
                 <select th:field="*{reqMats[__${stat.index}__].quantity}">
-                    <option th:each="num : ${#numbers.sequence(0, 20)}" th:value="${num}" th:text="${num}"></option>
+                    <option th:each="num : ${#numbers.sequence(0, 20)}" th:value="${num}" th:text="${num}"
+                            ></option>
                 </select>
             </td>
         </tr>
     </table>
     <input type="submit" value="必要数を計算する" />
 </form>
+
 
 
 </body>

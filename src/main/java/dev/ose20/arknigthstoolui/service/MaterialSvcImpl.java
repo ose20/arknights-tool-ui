@@ -59,7 +59,7 @@ public class MaterialSvcImpl implements MaterialSvc {
 
     @Override public List<RequiredMaterial> decomposeReqMats(List<RequiredMaterial> reqMats) {
         UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(
-                String.format("%s/decompose", apiUrlPrefix)
+                String.format("%s/calculation", apiUrlPrefix)
         );
 
         ResponseEntity<RequiredMaterial[]> res = restOperations.postForEntity(
