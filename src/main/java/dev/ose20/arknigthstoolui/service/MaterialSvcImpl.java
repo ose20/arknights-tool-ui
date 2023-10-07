@@ -3,7 +3,9 @@ package dev.ose20.arknigthstoolui.service;
 import dev.ose20.arknigthstoolui.config.ApiServerConfig;
 import dev.ose20.arknigthstoolui.dto.Material;
 import dev.ose20.arknigthstoolui.dto.MaterialDetail;
+import dev.ose20.arknigthstoolui.dto.RequiredMaterial;
 import jakarta.annotation.PostConstruct;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestOperations;
 import org.springframework.web.util.UriComponentsBuilder;
@@ -53,5 +55,19 @@ public class MaterialSvcImpl implements MaterialSvc {
                 MaterialDetail.class
             )
         );
+    }
+
+    @Override public List<RequiredMaterial> decomposeReqMats(List<RequiredMaterial> reqMats) {
+        UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(
+                String.format("%s/calculation", apiUrlPrefix)
+        );
+
+        ResponseEntity<RequiredMaterial[]> res = restOperations.postForEntity(
+                builder.build().toUriString(),
+                reqMats,
+                RequiredMaterial[].class
+        );
+
+        return Arrays.asList(Objects.requireNonNull(res.getBody()));
     }
 }

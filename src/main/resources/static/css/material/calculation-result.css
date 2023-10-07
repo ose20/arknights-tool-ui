@@ -1,0 +1,118 @@
+.breadcrumb ol {
+    list-style-type: none;
+    margin: 0;
+    padding: 0 0 0 1em;
+}
+
+.breadcrumb li {
+    display: inline;
+}
+
+.breadcrumb li::after {
+    content: "»";
+    margin: 0 0.4em 0 0.6em;
+    color: #999;
+}
+
+.breadcrumb li:last-child::after {
+    content: none;
+}
+
+.breadcrumb a {
+    text-decoration: none;
+}
+
+/* user-select-table のスタイリング */
+.user-select-table {
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+    margin-bottom: 15px;
+}
+
+.user-select-table td.selected-material {
+    display: flex;
+    flex-direction: column; /* 垂直方向に並べる */
+    align-items: center; /* 画像とテキストを中央揃え */
+    margin-right: 20px;
+}
+
+.material-row {
+    display: inline-block;
+}
+
+.selected-material {
+    display: flex;
+    flex-direction: column; /* 要素を縦方向に配置 */
+    align-items: center;   /* 中央揃え */
+    margin-right: 20px;    /* 隣のアイコンとのスペース */
+}
+
+.selected-material img {
+    max-width: 40px; /* 小さめのアイコン */
+    height: auto;
+    margin-right: 5px;
+}
+
+.selected-material span {
+    font-size: 14px; /* 小さめのフォント */
+}
+
+.result-table tbody tr {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.result-table .material-card {
+    display: flex;
+    align-items: center;
+}
+
+.result-table .material-card {
+    display: flex;
+    align-items: center;
+    background-color: #3a3a3a; /* カードの背景色 */
+    border: 1px solid #444;    /* カードの境界線 */
+    border-radius: 5px;        /* カードの角を丸くする */
+    padding: 10px;             /* カードの内部の余白 */
+    margin: 10px;              /* カード間のスペース */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* カードの影 */
+    transition: 0.3s;         /* アニメーション効果の速度 */
+}
+
+.material-card {
+    width: 200px;
+    overflow: hidden;
+    border: 1px solid #444;
+    background-color: #3a3a3a;
+    padding: 0;
+    border-radius: 5px;
+    text-align: center;
+    transition: 0.3s;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.material-image-and-name {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-left: -15px;
+    margin-right: -15px;
+    transform: scale(0.8);
+}
+
+
+.material-image-and-name img {
+    width: 80%;
+    height: auto;
+}
+
+.material-image-and-name span {
+    font-size: 1.2em;
+}
+
+.material-quantity {
+    font-size: 1.2em;
+    margin-left: -10px;
+}

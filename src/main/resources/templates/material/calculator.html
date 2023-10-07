@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.tymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>必要素材シミュレータ</title>
+    <link rel="stylesheet" th:href="@{/css/common.css}">
+    <link rel="stylesheet" th:href="@{/css/material/calculator.css}">
+</head>
+<body>
+
+<div class="breadcrumb">
+    <ol>
+        <li><a th:href="@{/materials}">素材一覧</a></li>
+        <li>必要素材シミュレータ</li>
+    </ol>
+</div>
+
+
+<h2>必要な素材を選択してください</h2>
+
+<form th:action="@{/materials/decompose}" th:object="${reqMatWrapper}" method="post">
+    <div style="text-align: center;">
+        <input type="submit" value="必要数を計算する"/>
+    </div>
+
+    <table class="material-selection-table">
+        <tr th:each="material, stat : *{reqMats}" class="material-selection-row">
+            <td class="material-card">
+                <div class="material-image">
+                    <img th:src="@{'/images/material/' + ${material.name} + '.png'}" alt="Material Image">
+                </div>
+                <span th:text="${material.name}"></span>
+                <input type="hidden" th:field="*{reqMats[__${stat.index}__].materialId}"
+                       th:value="${material.materialId}" />
+                <input type="hidden" th:field="*{reqMats[__${stat.index}__].name}"
+                       th:value="${material.name}" />
+                <select th:field="*{reqMats[__${stat.index}__].quantity}">
+                    <option th:each="num : ${#numbers.sequence(0, 20)}" th:value="${num}" th:text="${num}"></option>
+                </select>
+            </td>
+        </tr>
+    </table>
+
+    <div style="text-align: center;">
+        <input type="submit" value="必要数を計算する"/>
+    </div>
+</form>
+
+
+
+</body>
+</html>
